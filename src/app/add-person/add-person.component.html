@@ -25,6 +25,7 @@
             <label for="address" class="form-label">Address</label>
             <input required type="text" class="form-control" id="address" [(ngModel)]="person.address" name="address">
         </div>
-        <button [disabled]="addPersonForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+        <button [disabled]="addPersonForm.invalid" type="submit" class="btn btn-primary me-2">Submit</button>
+        <button [routerLink]="'/home'" type="submit" class="btn btn-primary ">Cancel</button>
     </form>
 </div>
