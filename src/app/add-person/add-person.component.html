@@ -1,0 +1,30 @@
+<div *ngIf="message !== ''" class="alert alert-success" role="alert">
+    {{message}}
+</div>
+<div class="container w-75 mt-2">
+    <h1>Add User</h1>
+    <form #addPersonForm="ngForm" (ngSubmit)="addPerson(addPersonForm)">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input required type="text" class="form-control" id="name" [(ngModel)]="person.name" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input required type="email" email class="form-control" id="email"
+                [(ngModel)]="person.email" name="email">
+        </div>
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input #personPhoneNumber="ngModel" minlength="8" maxlength="10" required type="number"
+                class="form-control" id="phoneNumber" [(ngModel)]="person.phoneNumber" name="phoneNumber">
+            <div class="text-danger fw-bold" *ngIf="personPhoneNumber.errors?.['minlength']">
+                Phone Number should contain 10 numbers!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input required type="text" class="form-control" id="address" [(ngModel)]="person.address" name="address">
+        </div>
+        <button [disabled]="addPersonForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
